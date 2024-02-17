@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - npm install --force
+
+  build:
+    commands:
+      # Set the REACT_APP_SITE_CONFIG environment variable
+      - echo "REACT_APP_SITE_CONFIG=$(echo '${JSON.stringify(siteConfig)}')" >> .env
+      - npm run build
+
+artifacts:
+  files:
+    - "**/*"
+  base-directory: "build"
+
+
+
+  
